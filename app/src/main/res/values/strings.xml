@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">WeatherApp</string>
+    <string name="item">Item</string>
+    <string name="Item">Item</string>
+    <string name="item1">Item</string>
+    <string name="please_select_location">Please select location</string>
+    <string name="change_location">Change Location</string>
+    <string name="city_name">City Name</string>
+    <string name="temperature_icon">Temperature</string>
+    <string name="temperature">TextView</string>
+    <string name="humidity_icon">Humidity</string>
+    <string name="humidity">TextView</string>
+    <string name="windspeed_icon">Windspeed</string>
+    <string name="windspeed">TextView</string>
+    <string name="wind_direction_icon">Wind Direction</string>
+    <string name="wind_direction">TextView</string>
+    <string name="condition_icon">Condition</string>
+    <string name="condition">TextView</string>
+    <string-array name="cities">
+        <item>Bangalore</item>
+        <item>Mumbai</item>
+        <item>Kochi</item>
+        <item>Hubli</item>
+        <item>Bangalore</item>
+        <item>Bangalore</item>
+        <item>Bangalore</item>
+        <item>Bangalore</item>
+        <item>Bangalore</item>
+        <item>Bangalore</item>
+        <item>Bangalore</item>
+        <item>Bangalore</item>
+        <item>Bangalore</item>
+        <item>Bangalore</item>
+        <item>Bangalore</item>
+        <item>Bangalore</item>
+    </string-array>
+</resources>
