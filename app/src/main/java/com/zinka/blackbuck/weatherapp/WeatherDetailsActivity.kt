@@ -9,6 +9,8 @@ import com.android.volley.Request
 import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import retrofit2.*
+import retrofit2.converter.gson.GsonConverterFactory
 
 
 class WeatherDetailsActivity : AppCompatActivity() {
@@ -21,35 +23,31 @@ class WeatherDetailsActivity : AppCompatActivity() {
 
         val adapter = CustomAdapter(resources.getStringArray(R.array.cities))
         recyclerview.adapter = adapter
-//        loadloactions()
+        loadloactions()
     }
-//
-//    private fun loadloactions(){
-//        val queue = Volley.newRequestQueue(this)
-//        val url = "http://10.0.2.2:8080/locations"
 
-// Request a string response from the provided URL.
-//        val stringRequest = StringRequest(
-//            Request.Method.GET, url,
-//            { response ->
-//                // Display the first 500 characters of the response string.
-//                Log.d("Success", response.substring(0, 500))
-//            },
-//            {
-//                Log.d("error", it.localizedMessage)
-//            },
-//        )
-//        val jsonArrayRequest = JsonArrayRequest(
-//            Request.Method.GET, url,null,
-//            { response ->
-//                // Display the first 500 characters of the response string.
-//               Log.d("Success",response.toString());
-//            },
-//            {
-//                Log.d("error", it.localizedMessage)
-//            },
-//        )
-//        queue.add(jsonArrayRequest)
+    private fun loadloactions() {
+        val retrofitBuilder = Retrofit.Builder()
+            .addConverterFactory(GsonConverterFactory.create())
+            .baseUrl("https://spring-weathermain.herokuapp.com/")
+            .build()
+            .create(LocationsAPIinterface::class.java)
+
+        val retrofitData = retrofitBuilder.getLocations()
+
+        retrofitData.enqueue(object : Callback<Locations?> {
+            override fun onResponse(call: Call<Locations?>, response: Response<Locations?>) {
+                val responseBody = response.body()!!
+                for(myData in responseBody){
+                    Log.d("Success",myData)
+                }
+            }
+
+            override fun onFailure(call: Call<Locations?>, t: Throwable) {
+                Log.d("Error","on Failure"+t.message)
+            }
+        })
     }
+
 
 }
