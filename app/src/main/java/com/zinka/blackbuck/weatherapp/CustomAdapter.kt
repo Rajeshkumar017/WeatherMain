@@ -20,6 +20,7 @@ class CustomAdapter(val locationsList:Locations) : RecyclerView.Adapter<CustomAd
         holder.cityName.text=locationsList[position].toString()
         holder.itemView.setOnClickListener { v ->
             val intent = Intent(v.context, CityActivity::class.java)
+            intent.putExtra("City",holder.cityName.text)
             v.context.startActivity(intent)
         }
     }
