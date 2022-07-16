@@ -14,6 +14,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 
 class WeatherDetailsActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.weather_detail_activity)
@@ -21,8 +22,7 @@ class WeatherDetailsActivity : AppCompatActivity() {
         val recyclerview = findViewById<RecyclerView>(R.id.recyclerview)
         recyclerview.layoutManager = LinearLayoutManager(this)
 
-        val adapter = CustomAdapter(resources.getStringArray(R.array.cities))
-        recyclerview.adapter = adapter
+
         loadloactions()
     }
 
@@ -38,9 +38,11 @@ class WeatherDetailsActivity : AppCompatActivity() {
         retrofitData.enqueue(object : Callback<Locations?> {
             override fun onResponse(call: Call<Locations?>, response: Response<Locations?>) {
                 val responseBody = response.body()!!
-                for(myData in responseBody){
-                    Log.d("Success",myData)
-                }
+                val myAdapter = CustomAdapter(responseBody)
+                myAdapter.notifyDataSetChanged()
+                val recyclerview = findViewById<RecyclerView>(R.id.recyclerview)
+                recyclerview.adapter=myAdapter
+
             }
 
             override fun onFailure(call: Call<Locations?>, t: Throwable) {
