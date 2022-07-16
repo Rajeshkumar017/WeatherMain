@@ -5,10 +5,6 @@ import android.os.Bundle
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.android.volley.Request
-import com.android.volley.toolbox.JsonArrayRequest
-import com.android.volley.toolbox.StringRequest
-import com.android.volley.toolbox.Volley
 import retrofit2.*
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -31,21 +27,22 @@ class WeatherDetailsActivity : AppCompatActivity() {
             .addConverterFactory(GsonConverterFactory.create())
             .baseUrl("https://spring-weathermain.herokuapp.com/")
             .build()
-            .create(LocationsAPIinterface::class.java)
+            .create(AllLocationsAPI::class.java)
+        val retrofitData = retrofitBuilder.getAllLocations()
 
-        val retrofitData = retrofitBuilder.getLocations()
-
-        retrofitData.enqueue(object : Callback<Locations?> {
-            override fun onResponse(call: Call<Locations?>, response: Response<Locations?>) {
+        retrofitData.enqueue(object : Callback<List<CityWeather>?> {
+            override fun onResponse(
+                call: Call<List<CityWeather>?>,
+                response: Response<List<CityWeather>?>
+            ) {
                 val responseBody = response.body()!!
                 val myAdapter = CustomAdapter(responseBody)
                 myAdapter.notifyDataSetChanged()
                 val recyclerview = findViewById<RecyclerView>(R.id.recyclerview)
                 recyclerview.adapter=myAdapter
-
             }
 
-            override fun onFailure(call: Call<Locations?>, t: Throwable) {
+            override fun onFailure(call: Call<List<CityWeather>?>, t: Throwable) {
                 Log.d("Error","on Failure"+t.message)
             }
         })
