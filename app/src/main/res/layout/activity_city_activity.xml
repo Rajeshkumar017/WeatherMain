@@ -12,6 +12,7 @@
         android:layout_marginEnd="4dp"
         android:padding="10sp"
         android:text="@string/change_location"
+        android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -21,112 +22,137 @@
         android:layout_height="wrap_content"
         android:padding="20sp"
         android:text="@string/city_name"
-        android:textSize="24sp"
+        android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TableLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <ScrollView
+        android:layout_width="353dp"
+        android:layout_height="247dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cityname">
+        app:layout_constraintTop_toTopOf="parent">
 
-        <TableRow
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/textView6"
+            <TableLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="20sp"
-                android:text="@string/temperature_icon" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cityname">
 
-            <TextView
-                android:id="@+id/temperature"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="20sp"
-                android:text="@string/temperature" />
-        </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/textView6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="25sp"
+                        android:text="@string/temperature_icon"
+                        android:textSize="25sp" />
 
-            <TextView
-                android:id="@+id/textView8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="20sp"
-                android:text="@string/humidity_icon" />
+                    <TextView
+                        android:id="@+id/temperature"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="20sp"
+                        android:text="@string/temperature"
+                        android:textSize="25sp" />
+                </TableRow>
 
-            <TextView
-                android:id="@+id/humidity"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="20sp"
-                android:text="@string/humidity" />
-        </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/textView8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="20sp"
+                        android:text="@string/humidity_icon"
+                        android:textSize="25sp" />
 
-            <TextView
-                android:id="@+id/textView10"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="20sp"
-                android:text="@string/windspeed_icon" />
+                    <TextView
+                        android:id="@+id/humidity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="20sp"
+                        android:text="@string/humidity"
+                        android:textSize="25sp" />
+                </TableRow>
 
-            <TextView
-                android:id="@+id/windSpeed"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="20sp"
-                android:text="@string/windspeed" />
-        </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+                    <TextView
+                        android:id="@+id/textView10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="20sp"
+                        android:text="@string/windspeed_icon"
+                        android:textSize="25sp" />
 
-            <TextView
-                android:id="@+id/textView18"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="20sp"
-                android:text="@string/wind_direction_icon" />
+                    <TextView
+                        android:id="@+id/windSpeed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="20sp"
+                        android:text="@string/windspeed"
+                        android:textSize="25sp" />
+                </TableRow>
 
-            <TextView
-                android:id="@+id/windDirection"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="20sp"
-                android:text="@string/wind_direction" />
-        </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/textView18"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="20sp"
+                        android:text="@string/wind_direction_icon"
+                        android:textSize="25sp" />
 
-            <TextView
-                android:id="@+id/textView13"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="20sp"
-                android:text="@string/condition_icon" />
+                    <TextView
+                        android:id="@+id/windDirection"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="20sp"
+                        android:text="@string/wind_direction"
+                        android:textSize="25sp" />
+                </TableRow>
 
-            <TextView
-                android:id="@+id/condition"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="20sp"
-                android:text="@string/condition" />
-        </TableRow>
-    </TableLayout>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/textView13"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="20sp"
+                        android:text="@string/condition_icon"
+                        android:textSize="25sp" />
+
+                    <TextView
+                        android:id="@+id/condition"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="20sp"
+                        android:text="@string/condition"
+                        android:textSize="25sp" />
+                </TableRow>
+            </TableLayout>
+
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

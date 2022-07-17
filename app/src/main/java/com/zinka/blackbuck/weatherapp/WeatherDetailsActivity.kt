@@ -18,11 +18,10 @@ class WeatherDetailsActivity : AppCompatActivity() {
         val recyclerview = findViewById<RecyclerView>(R.id.recyclerview)
         recyclerview.layoutManager = LinearLayoutManager(this)
 
-
-        loadloactions()
+        loadlocations()
     }
 
-    private fun loadloactions() {
+    private fun loadlocations() {
         val retrofitBuilder = Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
             .baseUrl("https://spring-weathermain.herokuapp.com/")
