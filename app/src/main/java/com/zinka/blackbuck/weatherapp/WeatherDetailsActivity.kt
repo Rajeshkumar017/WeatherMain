@@ -1,8 +1,11 @@
 package com.zinka.blackbuck.weatherapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.ProgressBar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import retrofit2.*
@@ -35,7 +38,16 @@ class WeatherDetailsActivity : AppCompatActivity() {
                 response: Response<List<CityWeather>?>
             ) {
                 val responseBody = response.body()!!
-                val myAdapter = CustomAdapter(responseBody)
+                val myAdapter = CustomAdapter(responseBody) {
+                    val intent = Intent(this@WeatherDetailsActivity, CityActivity::class.java)
+                    intent.putExtra("City", it.cityname)
+                    intent.putExtra("Temperature", it.temperature)
+                    intent.putExtra("Humidity", it.humidity)
+                    intent.putExtra("WindSpeed", it.windSpeed)
+                    intent.putExtra("WindDirection", it.winddirection)
+                    intent.putExtra("Condition", it.condition)
+                    startActivity(intent)
+                }
                 myAdapter.notifyDataSetChanged()
                 val recyclerview = findViewById<RecyclerView>(R.id.recyclerview)
                 recyclerview.adapter=myAdapter
