@@ -5,6 +5,6 @@ import retrofit2.http.GET
 
 interface AllLocationsAPI {
 
-    @GET("/locationsweather")
+    @GET("/all")
     fun getAllLocations():Call<List<CityWeather>>
 }

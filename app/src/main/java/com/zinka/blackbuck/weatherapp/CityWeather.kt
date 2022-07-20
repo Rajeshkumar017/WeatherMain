@@ -1,10 +1,10 @@
 package com.zinka.blackbuck.weatherapp
 
 data class CityWeather(
-    val cityname: String,
-    val condition: String,
+    val city: String,
+    val weatherCondition: String,
     val humidity: String,
-    val temperature: String,
+    val temparature: String,
     val windSpeed: String,
-    val winddirection: String
+    val windDirection: String
 )

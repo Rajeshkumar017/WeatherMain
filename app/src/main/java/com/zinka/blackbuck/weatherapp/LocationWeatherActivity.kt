@@ -3,19 +3,16 @@ package com.zinka.blackbuck.weatherapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.TextView
-import retrofit2.*
-import retrofit2.converter.gson.GsonConverterFactory
 
-class CityActivity : AppCompatActivity() {
+class LocationWeatherActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_city_activity)
+        setContentView(R.layout.location_weather_activity)
         val changeLocationBtn: Button = findViewById(R.id.button2);
         changeLocationBtn.setOnClickListener {
-            val intent = Intent(this, WeatherDetailsActivity::class.java);
+            val intent = Intent(this, SelectLocationActivity::class.java);
             startActivity(intent);
         }
         findViewById<TextView>(R.id.cityname).text = intent.getStringExtra("City")

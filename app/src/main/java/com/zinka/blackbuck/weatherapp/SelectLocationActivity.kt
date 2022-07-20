@@ -4,19 +4,17 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.View
-import android.widget.ProgressBar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import retrofit2.*
 import retrofit2.converter.gson.GsonConverterFactory
 
 
-class WeatherDetailsActivity : AppCompatActivity() {
+class SelectLocationActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.weather_detail_activity)
+        setContentView(R.layout.select_location_activity)
 
         val recyclerview = findViewById<RecyclerView>(R.id.recyclerview)
         recyclerview.layoutManager = LinearLayoutManager(this)
@@ -27,7 +25,7 @@ class WeatherDetailsActivity : AppCompatActivity() {
     private fun loadlocations() {
         val retrofitBuilder = Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl("https://spring-weathermain.herokuapp.com/")
+            .baseUrl("https://spring-weather-app.herokuapp.com/")
             .build()
             .create(AllLocationsAPI::class.java)
         val retrofitData = retrofitBuilder.getAllLocations()
@@ -39,13 +37,13 @@ class WeatherDetailsActivity : AppCompatActivity() {
             ) {
                 val responseBody = response.body()!!
                 val myAdapter = CustomAdapter(responseBody) {
-                    val intent = Intent(this@WeatherDetailsActivity, CityActivity::class.java)
-                    intent.putExtra("City", it.cityname)
-                    intent.putExtra("Temperature", it.temperature)
+                    val intent = Intent(this@SelectLocationActivity, LocationWeatherActivity::class.java)
+                    intent.putExtra("City", it.city)
+                    intent.putExtra("Temperature", it.temparature)
                     intent.putExtra("Humidity", it.humidity)
                     intent.putExtra("WindSpeed", it.windSpeed)
-                    intent.putExtra("WindDirection", it.winddirection)
-                    intent.putExtra("Condition", it.condition)
+                    intent.putExtra("WindDirection", it.windDirection)
+                    intent.putExtra("Condition", it.weatherCondition)
                     startActivity(intent)
                 }
                 myAdapter.notifyDataSetChanged()

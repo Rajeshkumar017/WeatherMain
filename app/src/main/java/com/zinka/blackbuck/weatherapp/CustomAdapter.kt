@@ -18,7 +18,7 @@ class CustomAdapter(val allLocationslist : List<CityWeather>, val onClickCallbac
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.cityName.text=allLocationslist[position].cityname
+        holder.cityName.text=allLocationslist[position].city
         holder.itemView.setOnClickListener { v ->
             onClickCallback.invoke(allLocationslist[position])
         }
